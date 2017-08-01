@@ -4,3 +4,5 @@ RemoteSystemsTempFiles
 org.eclipse.swt
 **swp
 **/target
+**/.settings
+

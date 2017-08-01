@@ -1,7 +1,34 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.cz</groupId>
-  <artifactId>tool</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>tool</name>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.cz</groupId>
+	<artifactId>tool</artifactId>
+	<name>tool</name>
+	<packaging>jar</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<properties>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+            <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+            <jnwtv.version>1.0.0-SNAPSHOT</jnwtv.version>
+    </properties>
+
+	<repositories>
+                 <repository>
+                         <id>oschina</id>
+                         <url>http://maven.oschina.net/content/groups/public/</url>
+                 </repository>
+                 <repository>
+                         <id>ibiblio</id>
+                         <url>http://mirrors.ibiblio.org/pub/mirrors/maven2/</url>
+                 </repository>
+         </repositories>
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>swt</artifactId> 
+			<version>4.6.1</version>
+		</dependency> 
+	</dependencies>
+
+
 </project>
