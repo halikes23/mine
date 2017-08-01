@@ -1,0 +1,6 @@
+.metadata
+.recommenders
+RemoteSystemsTempFiles
+org.eclipse.swt
+**swp
+**/target
