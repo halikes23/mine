@@ -1,8 +1,10 @@
 package myswt;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -20,9 +22,35 @@ import org.eclipse.swt.widgets.TableItem;
 
 public class TableForm {
 
+	private File file ;
+	
 	public static void main(String[] args) throws IOException {
 		
-		Display display = new Display();
+		URL url = TableForm.class.getClassLoader().getResource("") ;
+		
+		TableForm form = new TableForm() ;
+	
+		form.file = new File(url.getFile()+"myswt/access");
+		
+		Display.getDefault().syncExec(new Runnable(){
+
+			public void run() {
+				
+				try {
+					form.start();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
+			}
+
+		});
+		
+	}
+	
+	public void start() throws IOException{
+		
+		Display display = Display.getDefault() ;
 		
 		final Shell shell = new Shell(display) ;
 		
@@ -43,21 +71,16 @@ public class TableForm {
 		
 		String[] headers = {"接口","调用次数"} ;
 		
-		TableColumn sorter = null ;
-		
 		for( String header : headers ){
 			TableColumn column = new TableColumn(table,SWT.NONE);
 			column.setText(header);
 			column.setMoveable(true);
-			if( "调用次数".equals(header) ){
-				sorter = column ;
-			}
 			column.pack();
 		}
 		
 		Pattern pattern = Pattern.compile(".*\\)");
 		
-		BufferedReader reader = new BufferedReader(new FileReader("/temp/access")) ;
+		BufferedReader reader = new BufferedReader(new FileReader(file)) ;
 		
 		List<String[]> list = new ArrayList<String[]>() ;
 		
@@ -68,7 +91,6 @@ public class TableForm {
 			for(int i = 0 ; (line = reader.readLine() ) != null ; i ++  ){
 				Matcher matcher = pattern.matcher(line) ;
 				if(matcher.find()){
-					System.out.println(matcher.group());
 					line = line.replace(matcher.group(), "").replaceAll("\"", "") ;
 				}
 				
@@ -111,7 +133,6 @@ public class TableForm {
 				display.sleep();
 			}
 		}
-		
 	}
 	
 }

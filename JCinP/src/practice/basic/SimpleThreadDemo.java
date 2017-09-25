@@ -13,8 +13,6 @@ public class SimpleThreadDemo {
 		
 		Future<String> rst = es.submit(new MyCallable()) ;
 
-		System.out.println( rst.get() );
-		
 	}
 	
 	
